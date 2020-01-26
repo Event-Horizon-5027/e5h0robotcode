@@ -10,9 +10,9 @@ package frc.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.PWMVictorSPX;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -29,12 +29,12 @@ public class Robot extends TimedRobot {
 
   Joystick joy1; //inputs for Joystick
 
-  Spark  leftFrontMotor; 
-  Spark  leftBackMotor;
+  PWMVictorSPX  leftFrontMotor; 
+  PWMVictorSPX  leftBackMotor;
   SpeedControllerGroup leftMotorGroup;
 
-  Spark  rightFrontMotor;
-  Spark  rightBackMotor;
+  PWMVictorSPX  rightFrontMotor;
+  PWMVictorSPX  rightBackMotor;
   SpeedControllerGroup rightMotorGroup;
 
   DifferentialDrive m_drive;
@@ -52,12 +52,12 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     joy1 = new Joystick(0);
 
-    leftFrontMotor = new Spark(pwm1); 
-    leftBackMotor = new Spark(pwm2);
+    leftFrontMotor = new PWMVictorSPX(pwm1); 
+    leftBackMotor = new PWMVictorSPX(pwm2);
     leftMotorGroup = new SpeedControllerGroup(leftFrontMotor,leftBackMotor); //Grouping Left Motor
 
-    rightFrontMotor = new Spark(pwm3);
-    rightBackMotor = new Spark(pwm4);
+    rightFrontMotor = new PWMVictorSPX(pwm3);
+    rightBackMotor = new PWMVictorSPX(pwm4);
     rightMotorGroup = new SpeedControllerGroup(rightFrontMotor,rightBackMotor); //Grouping Right Motor
 
     m_drive = new DifferentialDrive(leftMotorGroup, rightMotorGroup);
